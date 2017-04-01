@@ -1,0 +1,90 @@
+{%  extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+<div class="space"></div>
+
+{% regroup products by category as categories_list %}
+{% for categor in categories_list %}
+    <h2>{{ categor.grouper }}</h2>
+        {% for product in categor.list  %}
+
+        <div class="col-md-5">
+        <a href="/products/{{product.id}}/">
+        <button type="button" class="btn btn-sky text-uppercase btn-lg">
+            {{ product.name }}
+        </button>
+            </a>
+        </div>
+
+    {%  endfor %}
+    <div class="clear"></div>
+
+{% endfor %}
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<style>
+    body{
+    font-family: 'Oswald', sans-serif;
+}
+
+    .space{
+        margin-bottom: 30px;
+    }
+
+.btn{
+    margin: 4px;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+.btn-sky {
+color: #fff;
+background-color: #0bacd3;
+border-bottom:2px solid #098aa9;
+    margin: 10px;
+
+}
+
+.btn-sky:hover,.btn-sky.active:focus, .btn-sky:focus, .open>.dropdown-toggle.btn-sky {
+color: #fff;
+background-color: #29b6d8;
+border-bottom:2px solid #2192ad;
+outline: none;
+}
+
+.btn-sky:active, .btn-sky.active {
+color: #fff;
+background-color: #0a97b9;
+border-top:2px solid #087994;
+outline-offset: none;
+margin-top: 2px;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+    outline: none;
+    outline-offset: 0px;
+}
+
+a {color:#fff;}
+a:hover {text-decoration:none; color:#fff;}
+.clear{
+    clear: both;
+}
+
+</style>
+
+{% endblock %}
