@@ -7,10 +7,11 @@ inflect = inflect.engine()
 
 
 class Aspect:
-    #Aspect_list=list()
+
 
     def __init__(self, reviews):
         self.reviews = reviews
+        self.aspect_dict = dict()
 
     def findMax(self,dic):
         maxSoFar = 0
@@ -19,33 +20,33 @@ class Aspect:
             if(dic[i] > maxSoFar):
                 maxSoFar = dic[i]
                 word = i
-
-        del dic[word]
         return word
+
 
 
     def filter_nouns(self,all_nouns):
         d=dict()
-        numberAspects = 10
+        numberAspects =20
         Aspect_list_Filterd=[]
         for i in range(len(all_nouns)):
             d[all_nouns[i]]=0
-
         for j in range(len(all_nouns)):
            #if all_nouns[j] in d:
             d[all_nouns[j]] += 1
-
         for i in range(numberAspects):
             word = self.findMax(d)
             while inflect.plural(word) in Aspect_list_Filterd:
+                del d[word]
                 word = self.findMax(d)
+            self.aspect_dict[word] = d[word]
+            del d[word]
             Aspect_list_Filterd.append(word)
+        return self.aspect_dict
 
-        return Aspect_list_Filterd
+
+
 
     def extract_aspects(self):
-        #d=dict()
-        #t=tuple()
         all_nouns=[]
         for w in self.reviews:
            tokens=nltk.word_tokenize(w)
@@ -56,3 +57,4 @@ class Aspect:
                    all_nouns.append(t[0])
         Aspect_list_Filterd = self.filter_nouns(all_nouns)
         return Aspect_list_Filterd
+

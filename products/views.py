@@ -3,7 +3,7 @@ from aspectExtractor import Aspect
 from django.shortcuts import render
 from .models import Product,Review
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
+from extractbiword import biword
 # Create your views here.
 
 import os
@@ -18,8 +18,8 @@ def details(request, product_id):
     reviews = list(Review.objects.values_list('text',flat=True).filter(product=product))
     print(reviews)
 
-    aspect = Aspect(reviews)
-    aspect_list = aspect.extract_aspects()
+    aspect = biword(reviews)
+    aspect_list = aspect.Extract()
 
     analyser = Analyser(reviews, aspect_list)
     d = analyser.analyse_reviews()
