@@ -15,17 +15,18 @@
     <title>Sentiment Analysis</title>
 
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+<link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}" >
+<link rel="stylesheet" href="{% static 'css/agency.css' %}" >
 
 <!-- Optional theme -->
-<link rel="stylesheet" href= {% static "css/bootstrap-theme.min.css" %} >
 
 <!-- Latest compiled and minified JavaScript -->
 <script src={% static "js/jquery-3.1.0.min.js" %}></script>
+<script src={% static "js/bootstrap.min.js" %}></script>
 
   </head>
 
-  <body>
+  <body id="page-top">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -74,105 +75,65 @@ body{
 .btn{
     margin: 10px;
     box-shadow: 1px 1px 5px #888888;
-}
-
-.btn-xs{
-    font-weight: 300;
-}
-.hot h2{color:#e74c3c}
-.hot  .btn {
-color: #fff;
-background-color: #db5566;
-border-bottom:2px solid #af4451;
-}
-
-.hot  .btn:hover, .sky  .btn.active:focus, .hot  .btn:focus, .open>.dropdown-toggle.hot  .btn {
-color: #fff;
-background-color: #df6a78;
-border-bottom:2px solid #b25560;
-outline: none;}
-
-
-.hot  .btn:active, .hot  .btn.active {
-color: #fff;
-background-color: #c04b59;
-border-top:2px solid #9a3c47;
-margin-top: 2px;
-}
-.sunny h2{color:#f1c40f}
-.sunny  .btn {
-color: #fff;
-background-color: #f4ad49;
-border-bottom:2px solid #c38a3a;
-}
-
-.sunny  .btn:hover, .sky  .btn.active:focus, .sunny  .btn:focus, .open>.dropdown-toggle.sunny  .btn {
-color: #fff;
-background-color: #f5b75f;
-border-bottom:2px solid #c4924c;
-outline: none;
+    font-size: 110%;
 }
 
 
-.sunny  .btn:active, .sunny  .btn.active {
-color: #fff;
-background-color: #d69840;
-border-top:2px solid #ab7a33;
-margin-top: 2px;
-}
-.fresh h2{color:#2ecc71}
-.fresh  .btn {
-color: #fff;
-background-color: #51bf87;
-border-bottom:2px solid #41996c;
-}
 
-.fresh  .btn:hover, .sky  .btn.active:focus, .fresh  .btn:focus, .open>.dropdown-toggle.fresh  .btn {
-color: #fff;
-background-color: #66c796;
-border-bottom:2px solid #529f78;
-outline: none;
-}
+a {color:#111;}
+a:hover {text-decoration:none; color:#1c0071;}
 
-
-.fresh  .btn:active, .fresh  .btn.active {
-color: #fff;
-background-color: #47a877;
-border-top:2px solid #39865f;
-outline: none;
-outline-offset: none;
-margin-top: 2px;
-}
-.sky h2{color:#2980b9}
-.sky  .btn {
-color: #fff;
-background-color: #0bacd3;
-border-bottom:2px solid #098aa9;
-}
-
-.sky  .btn:hover,.sky  .btn.active:focus, .sky  .btn:focus, .open>.dropdown-toggle.sky  .btn {
-color: #fff;
-background-color: #29b6d8;
-border-bottom:2px solid #2192ad;
-outline: none;
-}
-
-.sky  .btn:active, .sky  .btn.active {
-color: #fff;
-background-color: #0a97b9;
-border-top:2px solid #087994;
-outline-offset: none;
-margin-top: 2px;
-}
+/*
+body{  background-image: url({% static "header-bg.jpg"%});  }
+*/
+    header.masthead {
+  background-image: url({% static "header-bg.jpg"%});
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  text-align: center;
+  color: white; }
 
 
-a {color:#fff;}
-a:hover {text-decoration:none; color:#fff;}
+  header.masthead .intro-text {
+    padding-top: 100px;
+    padding-bottom: 50px; }
+    header.masthead .intro-text .intro-lead-in {
+      font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-style: italic;
+      font-size: 22px;
+      line-height: 22px;
+      margin-bottom: 25px; }
+    header.masthead .intro-text .intro-heading {
+      font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 50px;
+      margin-bottom: 25px; }
 
-
-
-}
-
+@media (min-width: 768px) {
+  header.masthead .intro-text {
+    padding-top: 300px;
+    padding-bottom: 200px; }
+    header.masthead .intro-text .intro-lead-in {
+      font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-style: italic;
+      font-size: 40px;
+      line-height: 40px;
+      margin-bottom: 25px; }
+    header.masthead .intro-text .intro-heading {
+      font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 75px;
+      line-height: 75px;
+      margin-bottom: 50px; } }
+.navbar-brand{margin-top: 10px;}
 
 </style>
 

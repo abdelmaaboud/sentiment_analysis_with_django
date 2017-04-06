@@ -6,9 +6,6 @@ from django.http import HttpResponse
 from extractbiword import biword
 # Create your views here.
 
-import os
-module_dir = os.path.dirname(__file__)  # get current directory
-
 def details(request, product_id):
     try:
         product= Product.objects.get(pk=product_id)
@@ -24,7 +21,6 @@ def details(request, product_id):
     analyser = Analyser(reviews, aspect_list)
     d = analyser.analyse_reviews()
     print(d)
-    # code Mostafa !!
 
     l_keys = list(d.keys())
     d2=dict()
@@ -44,15 +40,9 @@ def details(request, product_id):
         pos.append(i["pos"])
         neg.append(i["neg"])
     for i in range(len(l_keys)):
-        special_list.append([l_keys[i],pos[i],neg[i]])
+        special_list.append([l_keys[i].lower(),pos[i],neg[i]])
 
     print(special_list)
-
-
-
-
-
-
     return render(request,'product.html',{'product':product,'reviews':reviews,'special_list':special_list})
 
 def index(request):

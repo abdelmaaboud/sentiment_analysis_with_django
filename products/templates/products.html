@@ -1,31 +1,48 @@
 {%  extends 'base.html' %}
 {% block content %}
-
 <div class="container">
 <div class="space"></div>
+        {% regroup products by category as categories_list %}
 
-{% regroup products by category as categories_list %}
-{% for categor in categories_list %}
-                <div class="row {% cycle 'sky' 'hot' 'fresh' 'sunny' %}">
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h2 >choose Category</h2>
+</div>
+    <div class="list-group">
 
-    <h2>{{ categor.grouper }}</h2>
+        {% for categor in categories_list %}
 
-        {% for product in categor.list  %}
+        <div class="list-group-item">
+        <div  >
+        <a href="#" data-toggle="collapse" data-target="#{{categor.grouper}}"><h3>{{ categor.grouper }}</h3></a>
+            <div  class="collapse" id="{{categor.grouper}}" >
+                <div class="panel panel-success">
+                <div class="panel-heading">
+                <h4>Choose Product</h4>
+                </div>
+                 {% for product in categor.list  %}
 
-        <a href="/products/{{product.id}}/" class="row">
-        <button type="button" class="btn text-uppercase btn-lg  ">
-            {{ product.name }}
-        </button>
-            </a>
+                    <div class="list-group-item">
+                        <a href="/products/{{product.id}}/" class="row"><h4>{{ product.name }}</h4> </a>
 
-    {%  endfor %}
+                    </div>
+                 {%  endfor %}
+
+
+
+            </div>
             </div>
 
-    <div class="clear"></div>
-{% endfor %}
+        </div>
+             </div>
+        {% endfor %}
 
 
 
+
+
+
+</div>
 
 
 
@@ -38,18 +55,23 @@
 <style>
     body{
     font-family: 'Oswald', sans-serif;
+        background-color: #eeeeee;
 }
 
     .space{
         margin-bottom: 30px;
     }
-
+h4{margin-left: 15px;}
 
 
 .clear{
     clear: both;
 }
 
+.categ{
+    padding: 10px 20px;
+    font-size: 150%;
+}
 </style>
 
 {% endblock %}
